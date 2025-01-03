@@ -1,0 +1,75 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Error Container */
+.error-container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Error Title */
+.error-title {
+    font-size: 8rem;
+    font-weight: bold;
+    color: #ff6f61;
+    margin: 0;
+}
+
+/* Error Message */
+.error-message {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+/* Funny Joke */
+.error-joke {
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Back Button */
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Animated Box */
+.animation-box {
+    width: 100px;
+    height: 100px;
+    margin: 30px auto 0;
+    background-color: #ff6f61;
+    animation: bounce 1.5s infinite ease-in-out;
+    border-radius: 50%;
+}
+
+/* Bouncing Animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}

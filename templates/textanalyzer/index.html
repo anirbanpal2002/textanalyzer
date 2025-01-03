@@ -1,0 +1,58 @@
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template is working</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    
+</head>
+<body>
+<h1>Welcome to the text analyazer. Enter your text below</h1>
+<form action='/analyze' method='post'>
+    {% csrf_token %}
+    <textarea name='text' style='margin: 0px; width: 721px; height: 93px;'></textarea><br>
+    <input type="checkbox" name="fullcaps"> Uppercase<br>
+    <input type="checkbox" name="removepunc"> Remove Punctuations<br>
+    <input type="checkbox" name="extraspaceremover"> Remove Extra Spaces<br>
+    <input type="checkbox" name="charcount"> Count Characters<br>
+    <input type="checkbox" name="newlineremover"> Newline Remover<br>
+    <button type='submit'> Analyze Text</button>
+
+</form>
+</body>  
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analyzer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Text Analyzer</h1>
+        <p>Enter your text below and choose options to analyze it.</p>
+        <form action="/analyze" method="get">
+            {% csrf_token %}
+            <textarea name="text" placeholder="Type your text here..."></textarea><br>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="fullcaps"> Uppercase</label>
+                <label><input type="checkbox" name="removepunc"> Remove Punctuations</label>
+                <label><input type="checkbox" name="extraspaceremover"> Remove Extra Spaces</label>
+                <label><input type="checkbox" name="charcount"> Count Characters</label>
+                <label><input type="checkbox" name="newlineremover"> Newline Remover</label>
+            </div>
+            <br><button type="submit">Analyze Text</button>
+        </form>
+        <div class="result-box" name="result">{{ purpose }}  {{ analyzed_text }}</div>
+    
+    </div>
+    
+</body>
+</html>
+
