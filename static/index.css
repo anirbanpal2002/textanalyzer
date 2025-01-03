@@ -32,14 +32,28 @@ textarea {
 }
 
 .checkbox-group {
-    margin: 15px 0;
+    /* margin: 15px 0;
     text-align: left;
-    display: inline-block;
+    display: inline-block; */
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+
 }
 
 .checkbox-group label {
     display: block;
     margin: 5px 0;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text */
+    text-align: center;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
 }
 
 button {
@@ -58,11 +72,13 @@ button:hover {
 
 .result-box {
     margin-top: 20px;
-    background-color: #28282B;
+    background-color: floralwhite;
     height: 100px;
     width: 100%;
     border-radius: 5px;
     text-align: center;
-    color: #f5f5f5;
+    color: black;
     font-size: large;
+    border: solid;
+    border-color: paleturquoise
 }

@@ -16,44 +16,54 @@ def analyze(request):
     extraspaceremover = request.GET.get('extraspaceremover', 'off')
     charcount = request.GET.get('charcount', 'off')
     
-    if removepunc == "on":
-        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+    if removepunc == "on" and fullcaps == "on" and newlineremover == "on" and extraspaceremover == "on" and charcount == "on":
+        return render(request, 'textanalyzer/error.html')
+    
+    elif not djtext:
+        return render(request, 'textanalyzer/error.html')
+    
+    
+    elif removepunc == "on":
+        punctuations = '''!()-[]{};:'"\,<>./?@#$%w^&*_~'''
         analyzed = ""
         for char in djtext:
             if char not in punctuations:
                 analyzed = analyzed + char
-        params = {'purpose':'Removed Punctuations:', 'analyzed_text': analyzed}
-        
+        params = {'pur':'Your Text:', 'te':djtext, 'purpose':'Removed Punctuations:', 'analyzed_text': analyzed}
         return render(request, 'textanalyzer/index.html', params)
+    
     elif fullcaps == "on":
         analyzed = ""
         for char in djtext:
             analyzed = analyzed + char.upper()
-        params = {'purpose':'Changed to Uppercase:', 'analyzed_text': analyzed}
+        params = {'pur':'Your Text:', 'te':djtext, 'purpose':'Changed to Uppercase:', 'analyzed_text': analyzed}
         return render(request, 'textanalyzer/index.html', params)
+    
     elif newlineremover == "on":
         analyzed = ""
         for char in djtext:
             if char != "\n" and char != "\r":
                 analyzed = analyzed + char
-        params = {'purpose':'Removed New Lines:', 'analyzed_text': analyzed}
+        params = {'pur':'Your Text:', 'te':djtext,'purpose':'Removed New Lines:', 'analyzed_text': analyzed}
         return render(request, 'textanalyzer/index.html', params)
+    
     elif extraspaceremover == "on": 
         analyzed = ""
         for index, char in enumerate(djtext):
             if not(djtext[index] == " " and djtext[index+1] == " "):
                 analyzed = analyzed + char
-        params = {'purpose':'Removed Extra Spaces:', 'analyzed_text': analyzed}
+        params = {'pur':'Your Text:', 'te':djtext,'purpose':'Removed Extra Spaces:', 'analyzed_text': analyzed}
         return render(request, 'textanalyzer/index.html', params)
+    
     elif charcount == "on":
         analyzed = 0
         for char in djtext:
             analyzed = analyzed + 1
-        params = {'purpose':'Character Count:', 'analyzed_text': analyzed}
+        params = {'pur':'Your Text:', 'te':djtext,'purpose':'Character Count:', 'analyzed_text': analyzed}
         return render(request, 'textanalyzer/index.html', params)
-    elif removepunc == "on" and fullcaps == "on" and newlineremover == "on" and extraspaceremover == "on" and charcount == "on":
-        return HttpResponse("Please select any one operation and try again")
-
+    
+    
+    
     else:
         return render(request, 'textanalyzer/error.html')
     
