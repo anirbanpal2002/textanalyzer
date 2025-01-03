@@ -51,7 +51,8 @@ def analyze(request):
             analyzed = analyzed + 1
         params = {'purpose':'Character Count:', 'analyzed_text': analyzed}
         return render(request, 'textanalyzer/index.html', params)
-    
+    elif removepunc == "on" and fullcaps == "on" and newlineremover == "on" and extraspaceremover == "on" and charcount == "on":
+        return HttpResponse("Please select any one operation and try again")
 
     else:
         return render(request, 'textanalyzer/error.html')
